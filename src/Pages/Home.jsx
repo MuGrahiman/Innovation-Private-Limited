@@ -4,13 +4,28 @@ import HomeComponent from "../Components/Home";
 
 const Home = () => {
   const [products, setProducts] = useState({});
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
+  const [category, setCategory] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
+  const getProducts = async () =>
+    await fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((res) => setProducts(res.products));
-  }, []);
-  console.log(products);
 
+  const getSearchData = async (e) => {
+    e.preventDefault();
+    if (!searchTerm) return getProducts();
+    await fetch(`https://dummyjson.com/products/search?q=${searchTerm}`)
+      .then((res) => res.json())
+      .then((res) => setProducts(res.products));
+  };
+
+  const wipeOut = () => {
+    getProducts();
+    setSearchTerm("");
+  };
+  useEffect(() => {
+    getProducts();
+  }, []);
   return (
     <div>
       <Jumbotron Title={"Home"}>
@@ -40,13 +55,21 @@ const Home = () => {
             </div>
           </span>
 
-          <form class="d-flex col-lg-6 mx-auto justify-content-between ">
-            <div class="input-group mb-3 ">
+          <form
+            class="d-flex col-lg-6 mx-auto justify-content-between "
+            onSubmit={getSearchData}
+          >
+            <div class="input-group my-3 m-md-0">
+              <span onClick={wipeOut} className="input-group-text">
+                x
+              </span>
               <input
                 type="text"
                 class="form-control"
                 id="search_input"
-                placeholder="Search Here"
+                placeholder="Search Product Name ..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
               <button
                 type="submit"
@@ -56,10 +79,34 @@ const Home = () => {
               </button>
             </div>
           </form>
+          <span className="">
+            <div class="dropdown-center">
+              <button
+                class="btn btn-outline-secondary dropdown-toggle rounded-0"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sort
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    High
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Low
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </span>
         </div>
       </Jumbotron>
 
-   <HomeComponent products={products}/> 
+      <HomeComponent products={products} />
     </div>
   );
 };
