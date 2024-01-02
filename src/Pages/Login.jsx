@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Jumbotron from "../Components/Jumbotron";
 import LoginComponent from "../Components/Login";
+import { Context } from "../Components/Contex";
 
 const Login = () => {
+  const { setIsAuthenticated } = useContext(Context);
   const handleSubmit = (data) => {
     fetch("https://dummyjson.com/auth/login", {
       method: "POST",
@@ -14,7 +16,12 @@ const Login = () => {
       }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("currentUser", res);
+        setIsAuthenticated(true);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <>

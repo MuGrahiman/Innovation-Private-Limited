@@ -1,5 +1,5 @@
 import React from "react";
-import BrandLogo  from '../../public/logo192.png'
+import BrandLogo  from '../Img/logo192.png'
 const Header = () => {
   return (<>
    
@@ -10,8 +10,8 @@ const Header = () => {
           <img
             src={BrandLogo}
             alt="Logo"
-            width="24"
-            height="24"
+            width="25"
+            height="25"
             class="App-logo d-inline-block align-text-top"
           />
           Bootstrap

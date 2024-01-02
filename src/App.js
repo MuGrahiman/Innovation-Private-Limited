@@ -3,17 +3,27 @@ import './App.css';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Context } from './Components/Contex';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const handleAuthenticated = ()=>setIsAuthenticated(true)
+  const { isAuthenticated } = useContext(Context);
+  console.log(isAuthenticated)
   return (
-    <BrowserRouter >
-    <Routes>
-    <Route path='/' element={isAuthenticated?<Home/>:<Login setAuth={handleAuthenticated}/>}/></Routes>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={isAuthenticated ? <Home /> : <Login />}
+        />
+      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
 
 export default App;
+ 
