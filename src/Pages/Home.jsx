@@ -4,7 +4,7 @@ import HomeComponent from "../Components/Home";
 
 const Home = () => {
   const [products, setProducts] = useState({});
-  const [category, setCategory] = useState({});
+  const [categories, setcategories] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const getProducts = async () =>
     await fetch("https://dummyjson.com/products")
@@ -19,12 +19,27 @@ const Home = () => {
       .then((res) => setProducts(res.products));
   };
 
+  const getFilterData = async (category) =>
+    fetch(`https://dummyjson.com/products/category/${category}`)
+      .then((res) => res.json())
+      .then((res) => setProducts(res.products));
+
+  const getSortData = async (sortBy) => {
+    if(!products)return;
+    console.log(sortBy)
+    const sortedData = products.slice().sort((a, b) => sortBy === 'Low'? a.price - b.price:b.price - a.price);
+    setProducts(sortedData)
+  };
+console.log(products)
   const wipeOut = () => {
     getProducts();
     setSearchTerm("");
   };
   useEffect(() => {
     getProducts();
+    fetch("https://dummyjson.com/products/categories")
+      .then((res) => res.json())
+      .then((res) => setcategories(res));
   }, []);
   return (
     <div>
@@ -41,16 +56,14 @@ const Home = () => {
                 Filter
               </button>
               <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    High
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Low
-                  </a>
-                </li>
+                {categories[0] &&
+                  categories.map((category, i) => (
+                    <li key={i} onClick={() => getFilterData(category)}>
+                      <a class="dropdown-item" href="#">
+                        {category}
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </div>
           </span>
@@ -90,16 +103,13 @@ const Home = () => {
                 Sort
               </button>
               <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    High
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Low
-                  </a>
-                </li>
+                {["Low", "High"].map((sort, i) => (
+                  <li key={i} onClick={() => getSortData(sort)}>
+                    <a class="dropdown-item" href="#">
+                      {sort}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </span>
