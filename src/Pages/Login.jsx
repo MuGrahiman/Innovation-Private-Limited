@@ -4,7 +4,17 @@ import LoginComponent from "../Components/Login";
 
 const Login = () => {
   const handleSubmit = (data) => {
-    console.log(data);
+    fetch("https://dummyjson.com/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "kminchelle",
+        password: "0lelplR",
+        expiresInMins: 60,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
   };
   return (
     <>
