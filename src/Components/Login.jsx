@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Login = () => {
+const Login = ({onSubmit}) => {
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+  const handleSubmit = (e) => {
+    console.log("on submit");
+    e.preventDefault();
+    if(!name||!password)return;
+    onSubmit({name,password})
+  };
   return (
 
     <section class="login_part section-padding">
@@ -13,7 +21,7 @@ const Login = () => {
                 <h3 className="card-title">Welcome Back ! </h3>
                 <p className="card-text lead">Please Sign in .</p>
               </div>
-              <form class="row g-3 ">
+              <form class="row g-3 " onSubmit={handleSubmit}>
                 <div class="col-md-12 form-group">
                   <label for="name" class="form-label">
                     Username
@@ -24,6 +32,8 @@ const Login = () => {
                     id="name"
                     name="name"
                     placeholder="Username"
+                    value={name}
+                    onChange={(e)=>setName(e.target.value)}
                   />
                 </div>
                 <div class="col-md-12 form-group">
@@ -36,6 +46,8 @@ const Login = () => {
                     id="password"
                     name="password"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
                   />
                 </div>
                 <div class="col-md-12 form-group text-center">
