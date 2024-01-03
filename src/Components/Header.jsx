@@ -4,7 +4,7 @@ import { Context } from "./Contex";
 import userImage from "../Img/josephgreyuser.png";
 import Modal from "./Modal";
 const Header = () => {
-  const { isAuthenticated, currentUser } = useContext(Context);
+  const { isAuthenticated, currentUser, clearUser } = useContext(Context);
   // console.log(Object.keys(currentUser).length)
   // console.log(JSON.parse(currentUser))
 
@@ -172,13 +172,18 @@ const Header = () => {
                     <div class="modal-footer">
                       <button
                         type="button"
-                        class="btn btn-secondary"
+                        class="btn btn-outline-secondary"
                         data-bs-dismiss="modal"
                       >
                         Close
                       </button>
-                      <button type="button" class="btn btn-primary">
-                        Save changes
+                      <button
+                        onClick={clearUser}
+                        data-bs-dismiss="modal"
+                        type="button"
+                        class="btn btn-outline-danger"
+                      >
+                        Log Out
                       </button>
                     </div>
                   </div>
