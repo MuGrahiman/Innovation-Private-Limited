@@ -3,21 +3,19 @@ import React, { createContext, useMemo, useState } from "react";
 export const Context = createContext();
 
 const Provider = ({ children }) => {
-  const [Cart, setCart] = useState(0);
+  const [cart, setCart] = useState(0);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [isAuthenticated, setIsAuthenticated] = useState(
     currentUser ? true : false
   );
-// let currentUser = localStorage.getItem("currentUser")
-  console.log( currentUser);
+  console.log(cart);
   console.log(typeof currentUser);
-  // console.log(currentUser?.email);
-  // console.log(JSON.parse(currentUser));
-const clearUser = ()=>{
-  localStorage.removeItem("currentUser")
-  setIsAuthenticated(false)
-}
- 
+  const clearUser = () => {
+    localStorage.removeItem("currentUser");
+    setIsAuthenticated(false);
+    setCart(0)
+  };
+  const addToCart = () => setCart(cart + 1);
 
   return (
     <Context.Provider
@@ -25,8 +23,9 @@ const clearUser = ()=>{
         isAuthenticated,
         setIsAuthenticated,
         currentUser,
-        Cart,
-        setCart,clearUser
+        cart,
+        setCart,
+        clearUser,addToCart
       }}
     >
       {children}

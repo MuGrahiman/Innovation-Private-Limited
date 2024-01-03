@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from './Contex';
 
 const Card = ({thumbnail,title,brand,category,description,price}) => {
-    return (
+  const { addToCart } = useContext(Context);
+  return (
         <div class="col">
-          <div class="card h-100">
+          <div class="card h-100"> 
             <img src={thumbnail} class="card-img-top" alt="..." height="200" />
             <div class="card-body">
               <div class="card-header bg-transparent text-start p-0 mb-3">
@@ -17,11 +19,8 @@ const Card = ({thumbnail,title,brand,category,description,price}) => {
               <p class="text-body-secondary p-0 py-2 m-0 ">
                 Price: <b className="text-warning">${price}</b> 
                 </p>
-                <a href="#" class="btn btn-outline-primary">Add To Cart</a>
+                <a href="#" class="btn btn-outline-primary" onClick={addToCart}>Add To Cart</a>
 
-              {/* <div class="card-footer bg-transparent p-0 m-0">
-                
-              </div> */}
             </div>
           </div>
         </div>

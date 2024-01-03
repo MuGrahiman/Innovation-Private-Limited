@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
 import BrandLogo from "../Img/logo192.png";
 import { Context } from "./Contex";
-import userImage from "../Img/josephgreyuser.png";
 import Modal from "./Modal";
 const Header = () => {
-  const { isAuthenticated, currentUser, clearUser } = useContext(Context);
-  // console.log(Object.keys(currentUser).length)
-  // console.log(JSON.parse(currentUser))
+  const { isAuthenticated, currentUser, clearUser ,cart} = useContext(Context);
 
   return (
     <>
@@ -38,7 +35,6 @@ const Header = () => {
           </button>
           <div class="offcanvas offcanvas-start" id="navbarNav">
             <div class="offcanvas-header">
-              {/* <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Bootstrap</h5> */}
               <a
                 class="navbar-brand d-flex gap-3 align-items-center justify-content-center"
                 href="#"
@@ -72,9 +68,9 @@ const Header = () => {
                     class="btn bg-transparent position-relative"
                   >
                     Cart
-                    <span class="position-absolute top-0 start-10 translate-middle p-2 bg-danger border border-light rounded-circle">
-                      <span class="visually-hidden">New alerts</span>
-                    </span>
+                  { cart>0  && <span class="position-absolute small top-0 start-10 translate-middle px-1 m-0 bg-danger border border-light rounded-circle">
+                      <small class="text-white">{cart}</small>
+                    </span>}
                   </button>
                 </a>
               </li>

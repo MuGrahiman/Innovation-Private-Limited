@@ -4,9 +4,8 @@ const Login = ({onSubmit}) => {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const handleSubmit = (e) => {
-    console.log("on submit");
     e.preventDefault();
-    if(!name||!password)return;
+    if(!name||!password)return alert('Please Valid Credentials');
     onSubmit({name,password})
   };
   return (

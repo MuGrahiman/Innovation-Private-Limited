@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Context } from './Components/Contex';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
