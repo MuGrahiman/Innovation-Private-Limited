@@ -8,8 +8,6 @@ const Provider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     currentUser ? true : false
   );
-  console.log(cart);
-  console.log(typeof currentUser);
   const clearUser = () => {
     localStorage.removeItem("currentUser");
     setIsAuthenticated(false);

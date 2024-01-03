@@ -26,7 +26,6 @@ const Home = () => {
 
   const getSortData = async (sortBy) => {
     if (!products) return;
-    console.log(sortBy);
     const sortedData = products
       .slice()
       .sort((a, b) =>
@@ -34,7 +33,6 @@ const Home = () => {
       );
     setProducts(sortedData);
   };
-  console.log(products);
   const wipeOut = () => {
     getProducts();
     setSearchTerm("");

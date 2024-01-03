@@ -9,7 +9,6 @@ import Footer from './Components/Footer';
 
 function App() {
   const { isAuthenticated } = useContext(Context);
-  console.log(isAuthenticated)
   return (
     <BrowserRouter>
       <Header />

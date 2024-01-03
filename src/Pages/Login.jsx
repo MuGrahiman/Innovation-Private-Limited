@@ -5,6 +5,7 @@ import { Context } from "../Components/Contex";
 
 const Login = () => {
   const { setIsAuthenticated } = useContext(Context);
+
   const handleSubmit = (data) => {
     fetch("https://dummyjson.com/auth/login", {
       method: "POST",
@@ -15,9 +16,12 @@ const Login = () => {
         expiresInMins: 60,
       }),
     })
-      .then((res) => res.json())
+      .then(async(res) => { 
+        let response =await res.json()
+        if (res.ok) return response;
+        else throw response;
+      })
       .then((res) => {
-        console.log(res);
         const { email, firstName, gender, image, lastName, token, username } =
           res;
         localStorage.setItem(
@@ -36,6 +40,7 @@ const Login = () => {
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <>
       <Jumbotron Title={"Login"} />
