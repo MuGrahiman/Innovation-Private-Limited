@@ -14,7 +14,6 @@ const Login = () => {
       body: JSON.stringify({
         username: data.name,
         password: data.password,
-        expiresInMins: 60,
       }),
     })
       .then(async (res) => {
