@@ -25,12 +25,16 @@ const Home = () => {
       .then((res) => setProducts(res.products));
 
   const getSortData = async (sortBy) => {
-    if(!products)return;
-    console.log(sortBy)
-    const sortedData = products.slice().sort((a, b) => sortBy === 'Low'? a.price - b.price:b.price - a.price);
-    setProducts(sortedData)
+    if (!products) return;
+    console.log(sortBy);
+    const sortedData = products
+      .slice()
+      .sort((a, b) =>
+        sortBy === "Low" ? a.price - b.price : b.price - a.price
+      );
+    setProducts(sortedData);
   };
-console.log(products)
+  console.log(products);
   const wipeOut = () => {
     getProducts();
     setSearchTerm("");

@@ -18,7 +18,20 @@ const Login = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        localStorage.setItem("currentUser", res);
+        const { email, firstName, gender, image, lastName, token, username } =
+          res;
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({
+            email,
+            firstName,
+            gender,
+            image,
+            lastName,
+            token,
+            username,
+          })
+        );
         setIsAuthenticated(true);
       })
       .catch((err) => console.log(err));
