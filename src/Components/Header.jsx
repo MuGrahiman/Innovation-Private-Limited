@@ -2,58 +2,11 @@ import React, { useContext } from "react";
 import BrandLogo from "../Img/logo192.png";
 import { Context } from "./Contex";
 import userImage from "../Img/josephgreyuser.png";
+import Modal from "./Modal";
 const Header = () => {
-  const { isAuthenticated ,currentUser} = useContext(Context);
+  const { isAuthenticated, currentUser } = useContext(Context);
   // console.log(Object.keys(currentUser).length)
   // console.log(JSON.parse(currentUser))
-  let profile = !isAuthenticated ? (
-    <a class="nav-link" href="#">
-      Login
-    </a>
-  ) : (
-    <a class="nav-link" href="#">
-      Login
-      {/* <div class="dropdown">
-        <button
-          type="button"
-          class="btn btn-primary dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          data-bs-auto-close="outside"
-        >
-          Dropdown form
-        </button>
-        <form class="dropdown-menu p-4 w-50">
-          <div class="mb-3">
-            <label for="exampleDropdownFormEmail2" class="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              id="exampleDropdownFormEmail2"
-              placeholder="email@example.com"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="exampleDropdownFormPassword2" class="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleDropdownFormPassword2"
-              placeholder="Password"
-            />
-          </div>
-
-          <button type="submit" class="btn btn-primary">
-            Sign Out
-          </button>
-        </form>
-      </div> */}
-    </a>
-  );
 
   return (
     <>
@@ -126,123 +79,110 @@ const Header = () => {
                 </a>
               </li>
 
-              <li class="nav-item">{profile}</li>
-
               <li class="nav-item">
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  Launch demo modal
-                </button>
-
-                <div
-                  class="modal fade"
-                  data-bs-backdrop="static"
-                  id="exampleModal"
-                  tabIndex="1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                {isAuthenticated ? (
+                  <a
+                    class="nav-link"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    proile
+                  </a>
+                ) : (
+                  <a class="nav-link" href="#">
+                    Login
+                  </a>
+                )}
+                <Modal>
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        <small className="lead"> User Name:</small>{" "}
+                        <b> {currentUser?.username}</b>
+                      </h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body ">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        <small className="lead"> User Name:</small> <b> {currentUser?.username}</b>
-                        </h1>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
+                        <img
+                          src={currentUser?.image}
+                          class="img-fluid rounded-circle mx-auto"
+                          alt="..."
+                        ></img>
                       </div>
-                      <div class="modal-body ">
-                        <div class="modal-header">
-                          <img
-                            src={currentUser?.image}
-                            class="img-fluid rounded-circle mx-auto"
-                            alt="..."
-                          ></img>
-                        </div>
-                        <div class="row g-2">
-                          <div class="col-md">
-                            <div class="form-floating">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="floatingInputGrid"
-                                placeholder="name"
-                                value={currentUser?.firstName}
-                              />
-                              <label for="floatingInputGrid">
-                                First Name
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-md">
-                            <div class="form-floating">
+                      <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating">
                             <input
-                                type="text"
-                                class="form-control"
-                                id="floatingInputGrid"
-                                placeholder="name"
-                                value={currentUser?.lastName}
-                              />
-                              <label for="floatingInputGrid">
-                               Last Name
-                              </label>
-                            </div>
+                              type="text"
+                              class="form-control"
+                              id="floatingInputGrid"
+                              placeholder="name"
+                              value={currentUser?.firstName}
+                            />
+                            <label for="floatingInputGrid">First Name</label>
                           </div>
                         </div>
-                        <div class="row g-2">
-                          <div class="col-md">
-                            <div class="form-floating">
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="floatingInputGrid"
-                                placeholder="name@example.com"
-                                value={currentUser?.email}
-                              />
-                              <label for="floatingInputGrid">
-                               Email
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-md">
-                            <div class="form-floating">
+                        <div class="col-md">
+                          <div class="form-floating">
                             <input
-                                type="text"
-                                class="form-control"
-                                id="floatingInputGrid"
-                                placeholder="Gender"
-                                value={currentUser?.gender}
-                              />
-                              <label for="floatingInputGrid">
-                              Gender
-                              </label>
-                            </div>
+                              type="text"
+                              class="form-control"
+                              id="floatingInputGrid"
+                              placeholder="name"
+                              value={currentUser?.lastName}
+                            />
+                            <label for="floatingInputGrid">Last Name</label>
                           </div>
                         </div>
                       </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
-                        </button>
+                      <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input
+                              type="email"
+                              class="form-control"
+                              id="floatingInputGrid"
+                              placeholder="name@example.com"
+                              value={currentUser?.email}
+                            />
+                            <label for="floatingInputGrid">Email</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="floatingInputGrid"
+                              placeholder="Gender"
+                              value={currentUser?.gender}
+                            />
+                            <label for="floatingInputGrid">Gender</label>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Save changes
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </Modal>
               </li>
             </ul>
           </div>
