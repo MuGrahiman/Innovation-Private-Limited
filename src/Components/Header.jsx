@@ -3,7 +3,7 @@ import BrandLogo from "../Img/logo192.png";
 import { Context } from "./Contex";
 import Profile from "./Profile";
 const Header = () => {
-  const { isAuthenticated, currentUser, clearUser ,cart} = useContext(Context);
+  const { isAuthenticated,cart} = useContext(Context);
 
   return (
     <>

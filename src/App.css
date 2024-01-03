@@ -7,7 +7,10 @@
 .modal-backdrop {
   z-index: 0 !important;
 }
-
+.alert-position{
+  z-index: 9999;
+  margin: 5rem 0;
+}
 .App-link {
   color: #61dafb;
 }

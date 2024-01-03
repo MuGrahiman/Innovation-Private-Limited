@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import Jumbotron from "../Components/Jumbotron";
 import LoginComponent from "../Components/Login";
 import { Context } from "../Components/Contex";
+import useAlert from "../Hooks/useAlert";
 
 const Login = () => {
   const { setIsAuthenticated } = useContext(Context);
-
+  const Alert = useAlert();
   const handleSubmit = (data) => {
     fetch("https://dummyjson.com/auth/login", {
       method: "POST",
@@ -16,8 +17,8 @@ const Login = () => {
         expiresInMins: 60,
       }),
     })
-      .then(async(res) => { 
-        let response =await res.json()
+      .then(async (res) => {
+        let response = await res.json();
         if (res.ok) return response;
         else throw response;
       })
@@ -37,8 +38,9 @@ const Login = () => {
           })
         );
         setIsAuthenticated(true);
+        Alert('successfully Loged In', "success")
       })
-      .catch((err) => console.log(err));
+      .catch((err) => Alert(err.message, "danger"));
   };
 
   return (
