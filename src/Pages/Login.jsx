@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import Jumbotron from "../Components/Jumbotron";
 import LoginComponent from "../Components/Login";
-import { Context } from "../Components/Contex";
+import { Context } from "../Context/Contex";
 import useAlert from "../Hooks/useAlert";
 import { useNavigate } from "react-router-dom";
+import { useDispatchContext, useStateContext } from "../Context/Store";
 
 const Login = () => {
-  const { setIsAuthenticated } = useContext(Context);
+  const { setIsAuthenticated } = useDispatchContext();
   const Alert = useAlert();
   const navigate = useNavigate()
-  const handleSubmit = (data) => {
-    fetch("https://dummyjson.com/auth/login", {
+  const handleSubmit = (data) => { 
+    fetch("https://dummyjson.com/auth/login", { 
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -26,20 +27,8 @@ const Login = () => {
       .then((res) => {
         const { email, firstName, gender, image, lastName, token, username } =
           res;
-        localStorage.setItem(
-          "currentUser",
-          JSON.stringify({
-            email,
-            firstName,
-            gender,
-            image,
-            lastName,
-            token,
-            username,
-          })
-        );
-        setIsAuthenticated(true);
-        Alert('successfully Loged In', "success")
+     
+        setIsAuthenticated({ email, firstName, gender, image, lastName, token, username });
         navigate('/home')
       })
       .catch((err) => Alert(err.message, "danger"));

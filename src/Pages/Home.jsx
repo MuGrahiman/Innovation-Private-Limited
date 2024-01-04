@@ -60,10 +60,8 @@ const Home = () => {
               <ul class="dropdown-menu">
                 {categories[0] &&
                   categories.map((category, i) => (
-                    <li key={i} onClick={() => getFilterData(category)}>
-                      <a class="dropdown-item" href="#">
+                    <li key={i} class="dropdown-item" onClick={() => getFilterData(category)}>
                         {category}
-                      </a>
                     </li>
                   ))}
               </ul>
@@ -106,10 +104,8 @@ const Home = () => {
               </button>
               <ul class="dropdown-menu">
                 {["Low", "High"].map((sort, i) => (
-                  <li key={i} onClick={() => getSortData(sort)}>
-                    <a class="dropdown-item" href="#">
+                  <li key={i} class="dropdown-item" onClick={() => getSortData(sort)}>
                       {sort}
-                    </a>
                   </li>
                 ))}
               </ul>

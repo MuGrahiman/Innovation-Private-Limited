@@ -3,7 +3,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "./Components/Contex";
+import { Context } from "./Context/Contex";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Cart from "./Pages/Cart";

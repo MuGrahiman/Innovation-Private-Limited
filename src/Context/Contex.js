@@ -16,6 +16,7 @@ const Provider = ({ children }) => {
     setCart(0)
     Alert('successfully Loged Out', "success")
   };
+  
   const addToCart = () => setCart(cart + 1);
 
   return (

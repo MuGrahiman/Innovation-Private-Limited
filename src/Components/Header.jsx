@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import BrandLogo from "../Img/logo192.png";
-import { Context } from "./Contex";
+import { Context } from "../Context/Contex";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
+import { useStateContext } from "../Context/Store";
 const Header = () => {
-  const { isAuthenticated,cart} = useContext(Context);
+  const { isAuthenticated,cart} = useStateContext();
 
   return (
     <>

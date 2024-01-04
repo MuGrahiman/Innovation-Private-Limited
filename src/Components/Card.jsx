@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
-import { Context } from './Contex';
+import { Context } from '../Context/Contex';
+import { useDispatchContext } from '../Context/Store';
 
 const Card = ({thumbnail,title,brand,category,description,price}) => {
-  const { addToCart } = useContext(Context);
-  return (
+  const { addToCart } = useDispatchContext();
+  return ( 
         <div class="col">
           <div class="card h-100"> 
             <img src={thumbnail} class="card-img-top" alt="..." height="200" />
@@ -19,7 +20,7 @@ const Card = ({thumbnail,title,brand,category,description,price}) => {
               <p class="text-body-secondary p-0 py-2 m-0 ">
                 Price: <b className="text-warning">${price}</b> 
                 </p>
-                <a href="#" class="btn btn-outline-primary" onClick={addToCart}>Add To Cart</a>
+                <button href="#" class="btn btn-outline-primary" onClick={addToCart}>Add To Cart</button>
 
             </div>
           </div>

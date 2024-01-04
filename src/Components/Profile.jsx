@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import Modal from "./Modal";
-import { Context } from "./Contex";
+import { Context } from "../Context/Contex";
+import { useDispatchContext, useStateContext } from "../Context/Store";
 
 const Profile = () => {
-  const { currentUser, clearUser } = useContext(Context);
+  const {  clearUser } = useDispatchContext();
+  const { currentUser } =useStateContext()
   return (
     <Modal>
       <div class="modal-content">
