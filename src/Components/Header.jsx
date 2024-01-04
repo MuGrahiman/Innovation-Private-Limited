@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import BrandLogo from "../Img/logo192.png";
 import { Context } from "./Contex";
 import Profile from "./Profile";
+import { Link } from "react-router-dom";
 const Header = () => {
   const { isAuthenticated,cart} = useContext(Context);
 
@@ -9,9 +10,8 @@ const Header = () => {
     <>
       <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-lg">
         <div class="container">
-          <a
+          <Link to={'/home'}
             class="navbar-brand d-flex gap-3 align-items-center justify-content-center"
-            href="#"
           >
             <img
               src={BrandLogo}
@@ -21,7 +21,7 @@ const Header = () => {
               class="App-logo d-inline-block align-text-top"
             />
             Bootstrap
-          </a>
+          </Link>
           <button
             class="navbar-toggler"
             type="button"
@@ -35,10 +35,9 @@ const Header = () => {
           </button>
           <div class="offcanvas offcanvas-start" id="navbarNav">
             <div class="offcanvas-header">
-              <a
+              <Link to={'/home'}
                 class="navbar-brand d-flex gap-3 align-items-center justify-content-center"
-                href="#"
-              >
+                  >
                 <img
                   src={BrandLogo}
                   alt="Logo"
@@ -47,7 +46,7 @@ const Header = () => {
                   class="App-logo d-inline-block align-text-top"
                 />
                 Bootstrap
-              </a>
+              </Link>
               <button
                 type="button"
                 class="btn-close"
@@ -57,12 +56,12 @@ const Header = () => {
             </div>
             <ul class="navbar-nav ms-lg-auto align-items-center">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+                <Link to={'/home'} class="nav-link active" aria-current="page">
                   Home
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <Link to={'/cart'} class="nav-link">
                   <button
                     type="button"
                     class="btn bg-transparent position-relative"
@@ -72,23 +71,22 @@ const Header = () => {
                       <small class="text-white">{cart}</small>
                     </span>}
                   </button>
-                </a>
+                </Link>
               </li>
 
               <li class="nav-item">
                 {isAuthenticated ? (
-                  <a
+                  <Link
                     class="nav-link"
-                    href="#"
-                    data-bs-toggle="modal"
+                            data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                   >
                     proile
-                  </a>
+                  </Link>
                 ) : (
-                  <a class="nav-link" href="#">
+                  <Link to={'/'} class="nav-link">
                     Login
-                  </a>
+                  </Link>
                 )}
                <Profile/>
               </li>
