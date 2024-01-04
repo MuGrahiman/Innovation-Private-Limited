@@ -8,7 +8,7 @@ const Provider = ({ children }) => {
   const Alert = useAlert();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [isAuthenticated, setIsAuthenticated] = useState(
-    currentUser ? true : false
+    currentUser?.token ? true : false
   );
   const clearUser = () => {
     localStorage.removeItem("currentUser");

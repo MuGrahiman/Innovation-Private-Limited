@@ -3,10 +3,12 @@ import Jumbotron from "../Components/Jumbotron";
 import LoginComponent from "../Components/Login";
 import { Context } from "../Components/Contex";
 import useAlert from "../Hooks/useAlert";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { setIsAuthenticated } = useContext(Context);
   const Alert = useAlert();
+  const navigate = useNavigate()
   const handleSubmit = (data) => {
     fetch("https://dummyjson.com/auth/login", {
       method: "POST",
@@ -38,6 +40,7 @@ const Login = () => {
         );
         setIsAuthenticated(true);
         Alert('successfully Loged In', "success")
+        navigate('/home')
       })
       .catch((err) => Alert(err.message, "danger"));
   };
