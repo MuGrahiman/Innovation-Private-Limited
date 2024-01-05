@@ -1,13 +1,12 @@
+// contextStore.js
 import React, { createContext } from "react";
 import useContextActions from "../Hooks/useAction";
 
 const StateContext = createContext();
-
 const DispatchContext = createContext();
 
-
 const Provider = ({ children }) => {
-const [state,contextValue]=useContextActions()
+  const [state, contextValue] = useContextActions();
 
   return (
     <StateContext.Provider value={state}>

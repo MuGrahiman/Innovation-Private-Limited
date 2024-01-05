@@ -29,7 +29,7 @@ const Login = () => {
           res;
      
         setIsAuthenticated({ email, firstName, gender, image, lastName, token, username });
-        navigate('/home')
+        navigate('/')
       })
       .catch((err) => Alert(err.message, "danger"));
   };

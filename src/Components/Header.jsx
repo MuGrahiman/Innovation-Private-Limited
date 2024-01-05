@@ -11,7 +11,7 @@ const Header = () => {
     <>
       <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-lg">
         <div class="container">
-          <Link to={'/home'}
+          <Link to={'/'}
             class="navbar-brand d-flex gap-3 align-items-center justify-content-center"
           >
             <img
@@ -36,7 +36,7 @@ const Header = () => {
           </button>
           <div class="offcanvas offcanvas-start" id="navbarNav">
             <div class="offcanvas-header">
-              <Link to={'/home'}
+              <Link to={'/'}
                 class="navbar-brand d-flex gap-3 align-items-center justify-content-center"
                   >
                 <img
@@ -57,7 +57,7 @@ const Header = () => {
             </div>
             <ul class="navbar-nav ms-lg-auto align-items-center">
               <li class="nav-item">
-                <Link to={'/home'} class="nav-link active" aria-current="page">
+                <Link to={'/'} class="nav-link active" aria-current="page">
                   Home
                 </Link>
               </li>
@@ -85,7 +85,7 @@ const Header = () => {
                     proile
                   </Link>
                 ) : (
-                  <Link to={'/'} class="nav-link">
+                  <Link to={'/login'} class="nav-link">
                     Login
                   </Link>
                 )}

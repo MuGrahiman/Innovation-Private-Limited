@@ -15,9 +15,9 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/home" element={<Auth component={Home} />} />
+        <Route path="/" element={<Auth component={Home} />} />
         <Route path="/cart" element={<Auth component={Cart} />} />
-        <Route path="/" element={<Login />} exact />
+        <Route path="/login" element={<Login />} exact />
       </Routes>
       <Footer />
     </BrowserRouter>
