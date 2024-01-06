@@ -1,4 +1,3 @@
-# Project Name:Innovation Private Limited 
 
 E-Commerce App Enhancement
 ==========================
@@ -12,48 +11,10 @@ Task Overview
 -------------
 
 This short assignment involves implementing key features .
-Getting Started
----------------
 
 
-
-key features
+Key Features
 ------------
-
-### 1\. Login Process
-
-*   Implemented the user login process using [DummyJSON Auth](https://dummyjson.com/docs/auth).
-
-### 2\. Authorization Token
-
-*   Saved the login token for authorization purposes.
-
-### 3\. Protected Home Page
-
-*   Made the home page a protected route, allowing access only to logged-in users.
-
-### 4\. Product Display
-
-*    displayed products on the home page using data from [DummyJSON Products](https://dummyjson.com/docs/products).
-
-### 5\. Search Functionality
-
-*   Integrated a search feature on the page to allow users to search for products based on their names.
-
-### 6\. Price Filter Option
-
-*   Added a filter option on the home page to enable users to filter products based on category.
-
-### 7\. Shopping Cart Implementation
-
-*   Implemented a shopping cart and display the cart count on the top along with the total amount.
-
-### 8\. Add to Cart Button
-
-*   Create an "Add to Cart" button on product cards for a seamless shopping experience.
-
-
-## Features
 
 - Implemented Login process using [DummyJSON Auth](https://dummyjson.com/docs/auth).
 - Saved the login token for authorization purpose.
@@ -66,9 +27,8 @@ key features
 - Created an Alert to show notifications.
 - Created Profile for showing user details.
 
-
-
-# Getting Started with Create React App
+Getting Started
+---------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
