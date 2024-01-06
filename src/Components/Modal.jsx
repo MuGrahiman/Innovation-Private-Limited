@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({children}) => {
+const Modal = React.memo(({children}) => {
   return (
     <div
     class="modal fade"
@@ -17,6 +17,6 @@ const Modal = ({children}) => {
   </div>
   
   )
-}
+})
 
 export default Modal

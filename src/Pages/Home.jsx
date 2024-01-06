@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Jumbotron from "../Components/Jumbotron";
 import HomeComponent from "../Components/Home";
 
-const Home = () => {
+const Home = React.memo(() => {
   const [products, setProducts] = useState({});
   const [categories, setcategories] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -117,6 +117,6 @@ const Home = () => {
       <HomeComponent products={products} />
     </div>
   );
-};
+})
 
 export default Home;

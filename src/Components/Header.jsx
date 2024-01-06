@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import BrandLogo from "../Img/logo192.png";
-import { Context } from "../Context/Contex";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
 import { useStateContext } from "../Context/Store";
-const Header = () => {
+const Header = React.memo(() => {
   const { isAuthenticated,cart} = useStateContext();
-
   return (
     <>
       <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-lg">
@@ -68,8 +66,8 @@ const Header = () => {
                     class="btn bg-transparent position-relative"
                   >
                     Cart
-                  { cart>0  && <span class="position-absolute small top-0 start-10 translate-middle px-1 m-0 bg-danger border border-light rounded-circle">
-                      <small class="text-white">{cart}</small>
+                  { cart.length >0  && <span class="position-absolute small top-0 start-10 translate-middle px-1 m-0 bg-danger border border-light rounded-circle">
+                      <small class="text-white">{cart.length}</small>
                     </span>}
                   </button>
                 </Link>
@@ -97,6 +95,6 @@ const Header = () => {
       </nav>
     </>
   );
-};
+})
 
 export default Header;

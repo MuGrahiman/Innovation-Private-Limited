@@ -1,12 +1,11 @@
 import React from "react";
 import Jumbotron from "../Components/Jumbotron";
 import LoginComponent from "../Components/Login";
-import { Context } from "../Context/Contex";
 import useAlert from "../Hooks/useAlert";
 import { useNavigate } from "react-router-dom";
 import { useDispatchContext, useStateContext } from "../Context/Store";
 
-const Login = () => {
+const Login = React.memo(() => {
   const { setIsAuthenticated } = useDispatchContext();
   const Alert = useAlert();
   const navigate = useNavigate()
@@ -40,6 +39,6 @@ const Login = () => {
       <LoginComponent onSubmit={handleSubmit} />
     </>
   );
-};
+})
 
 export default Login;

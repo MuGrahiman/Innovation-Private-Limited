@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = ({onSubmit}) => {
+const Login = React.memo(({onSubmit}) => {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const handleSubmit = (e) => {
@@ -65,6 +65,6 @@ const Login = ({onSubmit}) => {
       </div>
     </section>
   );
-};
+})
 
 export default Login;

@@ -1,29 +1,25 @@
-// contextReducer.js
+
 import { useReducer } from "react";
 
 const currentUser = localStorage.getItem("currentUser");
-console.log(currentUser)
 const parsedUser = currentUser && JSON.parse(currentUser);
-console.log(parsedUser)
-const contextReducer = (state, action) => {
+const cartReducer = (state, action) => {
   switch (action.type) {
-    case "SET_AUTH":
+    case "DLT_FROM_CART":
       return {
         ...state,
         isAuthenticated: parsedUser.token ? true : false,
         currentUser: parsedUser && parsedUser,
       };
-    case "CLEAR_USER":
+    case "CLEAR_CART":
       return {
         ...state,
-        isAuthenticated: false,
-        currentUser: null,
         cart: 0,
       };
     case "ADD_TO_CART":
       return {
         ...state,
-        cart: state.cart + 1,
+        cart:[...state.cart, action.payload],
       };
     default:
       return state;
@@ -31,10 +27,8 @@ const contextReducer = (state, action) => {
 };
 
 const initialState = {
-  isAuthenticated: parsedUser.token ? true : false,
-  currentUser: parsedUser && parsedUser,
-  cart: 0,
+  cart: [],
 };
 
-const useContextReducer = () => useReducer(contextReducer, initialState);
+const useContextReducer = () => useReducer(cartReducer, initialState);
 export default useContextReducer;

@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import Modal from "./Modal";
-import { Context } from "../Context/Contex";
 import { useDispatchContext, useStateContext } from "../Context/Store";
 
-const Profile = () => {
+const Profile = React.memo(() => {
   const {  clearUser } = useDispatchContext();
   const { currentUser } =useStateContext()
   return (
@@ -102,6 +101,5 @@ const Profile = () => {
       </div>
     </Modal>
   );
-};
-
+})
 export default Profile;

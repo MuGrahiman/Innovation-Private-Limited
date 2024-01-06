@@ -1,23 +1,23 @@
-// contextStore.js
-import React, { createContext } from "react";
-import useContextActions from "../Hooks/useAction";
+import React from "react";
 
-const StateContext = createContext();
-const DispatchContext = createContext();
-
+import * as Cart from "./Providers/CartProvider.js";
+import * as User from "./Providers/UserProvider.js";
 const Provider = ({ children }) => {
-  const [state, contextValue] = useContextActions();
-
   return (
-    <StateContext.Provider value={state}>
-      <DispatchContext.Provider value={contextValue}>
-        {children}
-      </DispatchContext.Provider>
-    </StateContext.Provider>
+    <Cart.Provider>
+      <User.Provider>{children}</User.Provider>
+    </Cart.Provider>
   );
 };
 
-const useStateContext = () => React.useContext(StateContext);
-const useDispatchContext = () => React.useContext(DispatchContext);
+const useStateContext = () => ({
+  ...Cart.useCartState(),
+  ...User.useUserState(),
+});
 
-export { Provider, useStateContext, useDispatchContext };
+const useDispatchContext = () => ({
+  ...Cart.useCartDispatch(),
+  ...User.useUserDispatch(),
+});
+export default Provider;
+export { useStateContext, useDispatchContext };
